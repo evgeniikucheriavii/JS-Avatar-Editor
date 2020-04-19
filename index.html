@@ -9,18 +9,24 @@
 		<div class="wrapper">
 			<main class="main">
 				<div class="main__content">
-					<canvas width="600" height="600" id="canvas" class="canvas">
-						Your browser does not support JS or HTML5!
-					</canvas>
+					<div class="avatar">
+						<img id="image" class="image">
+						<canvas id="canvas" class="canvas">
+							Your browser does not support JS or HTML5!
+						</canvas>
+						
+					</div>
+					
+
 
 					<p>
-						<input type="number" name="widthBox" value="0" title="Width"> 
+						<input type="number" name="widthBox" id="widthBox" value="100" min="100" title="Width"> 
 						×
-						<input type="number" name="heightBox" value="0" title="Height">
+						<input type="number" name="heightBox" id="heightBox" value="100" min="100" title="Height">
 					</p>
 					<p>
-						<label>Top: <input type="number" name="topBox" value="0" title="Top"> </label><br><br>
-						<label>Left:  <input type="number" name="leftBox" value="0" title="Left"></label>
+						<label>Top: <input type="number" name="topBox" id="topBox" value="0" min="0" title="Top"> </label><br><br>
+						<label>Left:  <input type="number" name="leftBox" id="leftBox" value="0" min="0" title="Left"></label>
 					</p>
 					<p>
 						<button class="button" id="saveBtn">Save</button>
