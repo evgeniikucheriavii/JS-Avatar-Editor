@@ -7,6 +7,12 @@ const heightBox = document.getElementById("heightBox");
 const topBox = document.getElementById("topBox");
 const leftBox = document.getElementById("leftBox");
 
+
+widthBox.addEventListener("change", function () { ChangeBoxes(); });
+heightBox.addEventListener("change", function () { ChangeBoxes(); });
+topBox.addEventListener("change", function () { ChangeBoxes(); });
+leftBox.addEventListener("change", function () { ChangeBoxes(); });
+
 const image = document.getElementById("image");
 
 image.addEventListener("load", function () { Init(); });
@@ -26,7 +32,7 @@ var selection =
 
 canvas.addEventListener("mousedown", function (e) { MouseDown(e); });
 canvas.addEventListener("mousemove", function (e) { MouseMove(e); });
-canvas.addEventListener("mouseup", function (e) { MouseUp(e); });
+document.addEventListener("mouseup", function (e) { MouseUp(e); });
 
 
 function Init()
@@ -46,29 +52,6 @@ function Init()
 	DrawSelection();
 }
 
-function Update()
-{
-	UpdateBoxes();
-	DrawSelection();
-}
-
-function DrawSelection()
-{
-	ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	ctx.clearRect(selection.left, selection.top, selection.width, selection.height);
-}
-
-function UpdateBoxes()
-{
-	widthBox.value = selection.width;
-	widthBox.height = selection.height;
-	widthBox.top = selection.top;
-	widthBox.left = selection.left;
-}
 
 function MouseDown(e)
 {
@@ -82,15 +65,96 @@ function MouseMove(e)
 		selection.x = e.clientX - canvas.offsetLeft;
 		selection.y = e.clientY - canvas.offsetTop;
 
-		selection.left = selection.x - (selection.width / 2);
-		selection.top = selection.y - (selection.height / 2);
+		selection.left = selection.x - selection.width / 2;
+		selection.top = selection.y - selection.height / 2;
+
+		CheckSelection();
 
 		Update();
 	}
-	
 }
 
 function MouseUp(e)
 {
 	selection.mDown = false;
 }
+
+
+function Update()
+{
+	UpdateBoxes();
+	DrawSelection();
+}
+
+function DrawSelection()
+{
+	ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(selection.left, selection.top, selection.width, selection.height);
+}
+
+function ChangeBoxes()
+{
+	selection.width = widthBox.value;
+	selection.height = heightBox.value;
+	selection.top = topBox.value;
+	selection.left = leftBox.value;
+
+	CheckSelection();
+	Update();
+}
+
+function CheckSelection()
+{
+	if(selection.width < 100)
+	{
+		selection.width = 100;
+	}
+
+	if(selection.height < 100)
+	{
+		selection.height = 100;
+	}
+
+	if(selection.width > canvas.width)
+	{
+		selection.width = canvas.width;
+	}
+
+	if(selection.height > canvas.height)
+	{
+		selection.height = canvas.height;
+	}
+
+	if(selection.left < 0)
+	{
+		selection.left = 0;
+	}
+
+	if(selection.top < 0)
+	{
+		selection.top = 0;
+	}
+
+	if(selection.left > canvas.width - selection.width)
+	{
+		selection.left = canvas.width - selection.width;
+	}
+
+	if(selection.top > canvas.height - selection.height)
+	{
+		selection.top = canvas.height - selection.height;
+	}
+}
+
+function UpdateBoxes()
+{
+	widthBox.value = selection.width;
+	heightBox.value = selection.height;
+	topBox.value = selection.top;
+	leftBox.value = selection.left;
+}
+
