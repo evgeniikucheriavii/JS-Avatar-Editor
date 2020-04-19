@@ -37,6 +37,8 @@ body, html
 	border: 5px dashed #ddd;
 	background: #fff;
 	border-radius: 15px;
+	max-width: 60%;
+	max-height: 700px;
 }
 
 .input 
