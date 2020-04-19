@@ -93,7 +93,26 @@ function DrawSelection()
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 	ctx.clearRect(selection.left, selection.top, selection.width, selection.height);
+
+	ctx.strokeStyle = "#fff";
+
+	ctx.beginPath();
+
+	ctx.moveTo(selection.left, 0);
+	ctx.lineTo(selection.left, canvas.height);
+
+	ctx.moveTo(selection.left + selection.width, 0);
+	ctx.lineTo(selection.left + selection.width, canvas.height);
+
+	ctx.moveTo(0, selection.top);
+	ctx.lineTo(canvas.width, selection.top);
+
+	ctx.moveTo(0, selection.top + selection.height);
+	ctx.lineTo(canvas.width, selection.top + selection.height);
+
+	ctx.stroke();
 }
 
 function ChangeBoxes()
