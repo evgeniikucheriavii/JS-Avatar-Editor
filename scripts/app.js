@@ -82,6 +82,9 @@ function MouseMove(e)
 		selection.x = e.clientX - canvas.offsetLeft;
 		selection.y = e.clientY - canvas.offsetTop;
 
+		selection.left = selection.x - (selection.width / 2);
+		selection.top = selection.y - (selection.height / 2);
+
 		Update();
 	}
 	
