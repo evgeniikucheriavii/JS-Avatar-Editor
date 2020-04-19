@@ -45,3 +45,29 @@ body, html
 	vertical-align: middle;
 	margin: 5px;
 }
+
+.button
+{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 5px;
+	background: #6694f6;
+	border: 0;
+	border-radius: 15px;
+	padding: 10px 25px;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	font-size: 16px;
+}
+
+.button:hover
+{
+	background: #8acef1;
+}
+
+.button_disabled
+{
+	background: #555;
+	cursor: not-allowed;
+}
