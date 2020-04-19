@@ -27,5 +27,21 @@ body, html
 .main__content
 {
 	padding: 5px;
+	text-align: center;
 }
 
+.canvas
+{
+	display: block;
+	margin: 15px auto;
+	border: 5px dashed #ddd;
+	background: #fff;
+	border-radius: 15px;
+}
+
+.input 
+{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 5px;
+}
