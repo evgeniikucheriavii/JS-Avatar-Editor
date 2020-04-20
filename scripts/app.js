@@ -122,10 +122,10 @@ function DrawSelection()
 
 function ChangeBoxes()
 {
-	selection.width = widthBox.value;
-	selection.height = heightBox.value;
-	selection.top = topBox.value;
-	selection.left = leftBox.value;
+	selection.width = Math.round(widthBox.value);
+	selection.height = Math.round(heightBox.value);
+	selection.top = Math.round(topBox.value);
+	selection.left = Math.round(leftBox.value);
 
 	CheckSelection();
 	Update();
@@ -176,10 +176,10 @@ function CheckSelection()
 
 function UpdateBoxes()
 {
-	widthBox.value = selection.width;
-	heightBox.value = selection.height;
-	topBox.value = selection.top;
-	leftBox.value = selection.left;
+	widthBox.value = Math.round(selection.width);
+	heightBox.value = Math.round(selection.height);
+	topBox.value = Math.round(selection.top);
+	leftBox.value = Math.round(selection.left);
 }
 
 function Save()
