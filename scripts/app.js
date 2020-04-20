@@ -1,13 +1,17 @@
+//Холст и его контекст
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-//Input boxes
+//Поля ввода
 const widthBox = document.getElementById("widthBox");
 const heightBox = document.getElementById("heightBox");
 const topBox = document.getElementById("topBox");
 const leftBox = document.getElementById("leftBox");
+
+//Кнопка сохранения
 const saveBtn = document.getElementById("saveBtn");
 
+//Ссылка на новое изображение
 const newImg = document.getElementById("newImg");
 
 
@@ -18,13 +22,9 @@ leftBox.addEventListener("change", function () { ChangeBoxes(); });
 
 saveBtn.addEventListener("click", function () { Save(); });
 
-const image = document.getElementById("image");
-
-image.addEventListener("load", function () { Init(); });
-
-image.src = "images/photo.jpg";
-
-window.addEventListener("resize", function () { Init(); });
+canvas.addEventListener("mousedown", function (e) { MouseDown(e); });
+canvas.addEventListener("mousemove", function (e) { MouseMove(e); });
+document.addEventListener("mouseup", function (e) { MouseUp(e); });
 
 var selection = 
 {
@@ -37,9 +37,14 @@ var selection =
 	height: 100
 };
 
-canvas.addEventListener("mousedown", function (e) { MouseDown(e); });
-canvas.addEventListener("mousemove", function (e) { MouseMove(e); });
-document.addEventListener("mouseup", function (e) { MouseUp(e); });
+const image = document.getElementById("image");
+
+image.addEventListener("load", function () { Init(); });
+
+image.src = "images/photo.jpg";
+
+window.addEventListener("resize", function () { Init(); });
+
 
 
 function Init()
