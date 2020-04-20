@@ -6,12 +6,17 @@ const widthBox = document.getElementById("widthBox");
 const heightBox = document.getElementById("heightBox");
 const topBox = document.getElementById("topBox");
 const leftBox = document.getElementById("leftBox");
+const saveBtn = document.getElementById("saveBtn");
+
+const newImg = document.getElementById("newImg");
 
 
 widthBox.addEventListener("change", function () { ChangeBoxes(); });
 heightBox.addEventListener("change", function () { ChangeBoxes(); });
 topBox.addEventListener("change", function () { ChangeBoxes(); });
 leftBox.addEventListener("change", function () { ChangeBoxes(); });
+
+saveBtn.addEventListener("click", function () { Save(); });
 
 const image = document.getElementById("image");
 
@@ -177,3 +182,35 @@ function UpdateBoxes()
 	leftBox.value = selection.left;
 }
 
+function Save()
+{
+	var xhr = new XMLHttpRequest();
+
+	var params = "width=" + widthBox.value + "&height=" + heightBox.value + "&top=" + topBox.value + "&left=" + leftBox.value + "&cw=" + canvas.width + "&ch=" + canvas.height;
+
+	xhr.open("GET", "editor.php?" + params, true);
+
+	xhr.onload = function () 
+	{
+		if (xhr.status != 200) 
+		{
+			console.log(xhr.status + ": " + xhr.statusText);
+		} 
+		else 
+		{
+			console.log(xhr.responseText);
+
+			if (xhr.responseText == "ok")
+			{
+				newImg.className = "a";
+			}
+			else
+			{
+				alert("Ошибка!");
+			}
+		}
+	};
+
+	xhr.send();
+}
+	

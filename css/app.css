@@ -38,14 +38,14 @@ body, html
 	background: #fff;
 	border-radius: 15px;
 	max-width: 60%;
-	max-height: 700px;
+	max-height: 600px;
 }
 
 .canvas
 {
 	display: block;
 	max-width: 60%;
-	max-height: 700px;
+	max-height: 600px;
 	position: absolute;
 	border: 0;
 	border-radius: 15px;
@@ -83,4 +83,19 @@ body, html
 {
 	background: #555;
 	cursor: not-allowed;
+}
+
+.a, .a:visited
+{
+	color: #6694f6;
+}
+
+.a:hover
+{
+	text-decoration: none;
+}
+
+.a_hidden
+{
+	opacity: 0;
 }
