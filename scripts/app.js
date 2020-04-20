@@ -24,6 +24,8 @@ image.addEventListener("load", function () { Init(); });
 
 image.src = "images/photo.jpg";
 
+window.addEventListener("resize", function () { Init(); });
+
 var selection = 
 {
 	mDown: false,
@@ -53,7 +55,6 @@ function Init()
 	widthBox.setAttribute("max", image.width);
 	heightBox.setAttribute("max", image.height);
 
-	//DrawImage();
 	DrawSelection();
 }
 
